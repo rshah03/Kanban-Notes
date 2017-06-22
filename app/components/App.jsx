@@ -19,6 +19,22 @@ class App extends Component {
 		};
 	}
 
+	render() {
+		const {notes} = this.state;
+
+		return (
+			<div>
+				<button onClick={this.addNote}>+</button>
+				<Notes
+					notes={notes}
+					onNoteClick={this.activateNoteEdit}
+					onEdit={this.editNote}
+					onDelete={this.deleteNote}
+				/>
+			</div>
+		);
+	}
+
 	addNote = () => {
 		this.setState({
 			notes: this.state.notes.concat([{
@@ -35,15 +51,29 @@ class App extends Component {
 		});
 	}
 
-	render() {
-		const {notes} = this.state;
+	activateNoteEdit = (id) => {
+		this.setState({
+			notes: this.state.notes.map(note => {
+				if(note.id === id) {
+					note.editing = true;
+				}
 
-		return (
-			<div>
-				<button onClick={this.addNote}>+</button>
-				<Notes notes={notes}  onDelete={this.deleteNote} />
-			</div>
-		);
+				return note;
+			})
+		});
+	}
+
+	editNote = (id, task) => {
+		this.setState({
+			notes: this.state.notes.map(note => {
+				if(note.id === id) {
+					note.editing = false;
+					note.task = task;
+				}
+
+				return note;
+			})
+		});
 	}
 }
 
