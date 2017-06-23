@@ -12,7 +12,7 @@ export default ({notes, onNoteClick=() => {}, onEdit=() => {}, onDelete=() => {}
 						editing={editing}
 						value={task}
 						onEdit={onEdit.bind(null, id)} />
-						
+					<span> -- </span>
 					<button onClick={onDelete.bind(null, id)}>X</button>
 				</Note>
 			</li>
