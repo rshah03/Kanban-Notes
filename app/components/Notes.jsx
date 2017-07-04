@@ -16,7 +16,7 @@ export default ({notes, onNoteClick=() => {}, onEdit=() => {}, onDelete=() => {}
 					<span> </span>
 					<button 
 						className='delete' 
-						onClick={onDelete.bind(null, id)}>Delete</button>
+						onClick={onDelete.bind(null, id)}>DELETE</button>
 				</Note>
 			</li>
 		)}
