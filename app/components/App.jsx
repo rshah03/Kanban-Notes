@@ -1,26 +1,13 @@
 import React, { Component } from 'react';
 import Notes from './Notes';
 import uuid from 'uuid';
+import connect from '../libs/connect';
+import NoteActions from '../actions/NoteActions';
 
 class App extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			notes: [
-				{
-					id: uuid.v4(),
-					task: 'Finish tutorial'
-				},
-				{
-					id: uuid.v4(),
-					task: 'Do laundry'
-				}
-			]
-		};
-	}
 
 	render() {
-		const {notes} = this.state;
+		const {notes} = this.props;
 
 		return (
 			<div>
@@ -77,4 +64,9 @@ class App extends Component {
 	}
 }
 
-export default App;
+//export default App;
+export default connect(({notes}) => ({
+	notes
+}), {
+	NoteActions
+})(App)
