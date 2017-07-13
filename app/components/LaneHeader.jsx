@@ -15,6 +15,10 @@ export default connect(() => ({}), {
 			id: noteId,
 			task: 'New Task'
 		});
+		LaneActions.attachToLane({
+			laneId: lane.id,
+			noteId
+		});
 	};
 
 	return (
